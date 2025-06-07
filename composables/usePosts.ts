@@ -1,7 +1,7 @@
 import type {BlogArticle} from "~/types/blog";
 
 export const usePosts = () => {
-    const { data } = useFetch<BlogArticle[] | null>('/api/posts');
+    const { data, status } = useFetch<BlogArticle[] | null>('/api/posts');
 
     const posts = computed(() => {
         if (!Array.isArray(data.value)) {
@@ -36,5 +36,6 @@ export const usePosts = () => {
         totalPages,
         currentPage,
         currentPageList,
+        status,
     };
 }

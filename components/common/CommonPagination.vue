@@ -76,7 +76,7 @@ function prevPage() {
         width: 40px;
         height: 40px;
         border: none;
-        background: #f5f5f5;
+        background: $base-600;
         border-radius: 12px;
         font-size: 16px;
         cursor: pointer;

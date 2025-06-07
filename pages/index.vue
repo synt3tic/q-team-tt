@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import {usePosts} from "~/composables/usePosts";
+import BlogListSkeleton from "~/components/blog/BlogListSkeleton.vue";
 
-const { currentPage, totalPages, currentPageList } = usePosts();
+const { currentPage, totalPages, currentPageList, status } = usePosts();
 const router = useRouter();
 
 const onCardClick = (id: string) => {
@@ -14,7 +15,7 @@ const onCardClick = (id: string) => {
         <h1>Articles</h1>
 
         <Transition name="fade" mode="out-in">
-            <CommonList :key="currentPage" :list="currentPageList">
+            <CommonList v-if="status === 'success'" :key="currentPage" :list="currentPageList">
                 <template #default="{ item }">
                     <CommonCard @click="onCardClick(item.id)">
                         <template #image>
@@ -27,7 +28,7 @@ const onCardClick = (id: string) => {
                         </template>
 
                         <template #title>
-                            {{ item.title }}
+                            {{ item.preview }}
                         </template>
 
                         <template #add-text>
@@ -36,6 +37,8 @@ const onCardClick = (id: string) => {
                     </CommonCard>
                 </template>
             </CommonList>
+
+            <BlogListSkeleton v-else-if="status === 'pending'" />
         </Transition>
 
         <CommonPagination
