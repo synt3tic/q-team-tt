@@ -27,5 +27,8 @@ import TheFooter from "~/components/layout/TheFooter.vue";
 .main {
     position: relative;
     flex: 1;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
 }
 </style>

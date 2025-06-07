@@ -38,6 +38,7 @@ const links = [
     align-items: center;
     justify-content: space-between;
     height: 121px;
+    min-height: 121px;
     padding: 0 40px;
 
     .menu {
